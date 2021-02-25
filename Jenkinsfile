@@ -6,9 +6,6 @@ pipeline {
             steps {
                 echo 'Build stage'
             }
-            steps {
-                echo 'Build stage 2nd steps'
-            }
         }
         stage('Test') {
             steps {
@@ -26,7 +23,6 @@ pipeline {
             steps {
                 echo 'deploy stage'
             }
-
         }
     }
 }
