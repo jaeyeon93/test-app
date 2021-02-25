@@ -5,13 +5,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'make'
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+                echo 'Build stage'
+            }
+            steps {
+                echo 'Build stage 2nd steps'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'Testing stage'
                 sh 'make check || true'
                 junit '**/target/*.xml'
             }
@@ -23,8 +25,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'make publish'
+                echo 'deploy stage'
             }
+
         }
     }
 }

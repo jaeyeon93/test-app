@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static org.springframework.test.util.AssertionErrors.fail;
@@ -81,12 +83,8 @@ public class OrderServiceTest {
 
         int orderCount = 11;
         // when
-        orderService.order(member.getId(), item.getId(), orderCount);
-        assertThrows(NotEnoughStockException.class, () -> {
-            System.out.println("재고 부족 예외 발생");
-        });
-        // then
-        fail("재고 수량 부족 예외가 발생해야 한다.");
+        NotEnoughStockException exception = assertThrows(NotEnoughStockException.class, () -> orderService.order(member.getId(), item.getId(), orderCount));
+        assertThat(exception.getMessage(), is("need more stock"));
     }
 
     private Book createBook(String name, int price, int stockQuantity) {
