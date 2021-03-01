@@ -1,33 +1,32 @@
 pipeline {
-    agent {
-        docker {
-            image 'gradle:6.8.2'
-        }
-    }
-
+//     agent {
+//         docker {
+//             image 'gradle:6.8.2'
+//         }
+//     }
+    agent any
     stages {
         stage('Build') {
             steps {
-                echo 'Build stage print gradle version'
-                sh 'which docker'
+                echo 'Hello Build Stage'
             }
         }
-//         stage('Test') {
-//             steps {
-//                 echo 'Testing stage'
+        stage('Test') {
+            steps {
+                echo 'Hello Testing stage'
 //                 sh 'make check || true'
 //                 junit '**/target/*.xml'
-//             }
-//         }
-//         stage('Deploy') {
+            }
+        }
+        stage('Deploy') {
 //             when {
 //                 expression {
 //                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
 //                 }
 //             }
-//             steps {
-//                 echo 'deploy stage'
-//             }
-//         }
+            steps {
+                echo 'Hello deploy stage'
+            }
+        }
     }
 }
