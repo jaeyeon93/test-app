@@ -9,6 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build stage print gradle version'
+                sh 'docker -v'
                 sh 'gradle -v'
             }
         }
