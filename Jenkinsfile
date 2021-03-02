@@ -4,6 +4,9 @@ pipeline {
             image 'gradle:6.8.2'
         }
     }
+    options {
+        skipStagesAfterUnstable()
+    }
     environment {
         NAME = 'jimmy'
         AUTH = 'hello auth'
@@ -29,15 +32,17 @@ pipeline {
             always {
                 archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
                 junit 'build/reports/**/*.xml'
+                deleteDir() /* clean up our workspace */
             }
             success {
                 echo 'This will run only if successful'
             }
             failure {
                 echo 'This will run only if failed'
+
             }
             unstable {
-                echo 'This will run only if the run was marked as unstable'
+                echo '빌드 결과 실패. '
             }
             changed {
                 echo 'This will run only if the state of the Pipeline has changed'
