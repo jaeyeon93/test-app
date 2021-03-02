@@ -9,6 +9,10 @@ pipeline {
             image 'node:14-alpine'
         }
     }
+    environment {
+        NAME = 'jimmy'
+        AUTH = 'hello auth'
+    }
     stages {
         stage('Build') {
             steps {
@@ -19,6 +23,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Hello Testing stage'
+                echo "env variable test NAME ${NAME}"
+                echo "env variable test AUTH ${AUTH}"
 //                 sh 'make check || true'
 //                 junit '**/target/*.xml'
             }
