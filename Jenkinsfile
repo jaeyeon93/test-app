@@ -15,6 +15,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Hello Build Stage'
+                sh 'java --version'
+                sh 'ls -l'
                 sh './gradlew build'
             }
         }
