@@ -4,11 +4,16 @@ pipeline {
 //             image 'gradle:6.8.2'
 //         }
 //     }
-    agent any
+    agent {
+        docker {
+            image 'node:14-alpine'
+        }
+    }
     stages {
         stage('Build') {
             steps {
                 echo 'Hello Build Stage'
+                sh 'node --version'
             }
         }
         stage('Test') {
