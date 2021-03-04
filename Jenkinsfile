@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-//         docker {
-//             image 'gradle:6.8.2'
-//         }
-        any
-    }
+    agent any
     tools {
         jdk("JAVA11")
     }
