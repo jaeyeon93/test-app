@@ -5,7 +5,7 @@ pipeline {
         }
     }
     tools {
-        jdk("JAVA9")
+        jdk("JAVA11")
     }
     options {
         skipStagesAfterUnstable()
