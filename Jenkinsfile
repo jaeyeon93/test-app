@@ -17,9 +17,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo '${JAVA_HOME}'
-                echo 'test env in jenkine ${tmp}'
-//                 sh './gradlew build'
+                echo ${JAVA_HOME}
+                sh './gradlew build'
             }
         }
 //         stage('Test') {
