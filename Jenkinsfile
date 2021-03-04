@@ -18,6 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "java home path : ${JAVA_HOME}"
+                sh 'gradle -v'
                 sh './gradlew build'
             }
         }
